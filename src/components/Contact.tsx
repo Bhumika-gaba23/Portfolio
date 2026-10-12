@@ -1,0 +1,9 @@
+import { Check, Clipboard, ArrowUpRight } from 'lucide-react'
+import { useState } from 'react'
+import { Reveal } from './Reveal'
+
+export function Contact() {
+  const [copied, setCopied] = useState(false)
+  const copyEmail = async () => { await navigator.clipboard.writeText('bhumikagaba997@gmail.com'); setCopied(true); setTimeout(() => setCopied(false), 1800) }
+  return <section id="contact" className="border-t border-white/[.08] px-6 pb-8 pt-24 md:px-10 lg:px-14 lg:pt-36"><Reveal className="mx-auto max-w-7xl"><span className="font-mono text-[9px] uppercase tracking-[.15em] text-emerald-400">05 / Contact</span><h2 className="mt-8 max-w-5xl text-[clamp(3.5rem,8vw,7.5rem)] font-semibold leading-[.9] tracking-[-.065em] text-stone-100">Let’s build something <span className="font-normal text-stone-600">together.</span></h2><div className="mt-14 flex flex-col justify-between gap-8 border-t border-white/[.08] py-8 md:flex-row md:items-center"><a href="mailto:bhumikagaba997@gmail.com" className="group flex w-fit items-center gap-3 text-sm text-stone-300 transition hover:text-emerald-300">bhumikagaba997@gmail.com <ArrowUpRight size={16} className="transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></a><button onClick={copyEmail} className="flex w-fit items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 font-mono text-[9px] text-stone-500 transition hover:-translate-y-0.5 hover:border-emerald-400/40 hover:text-stone-200">{copied ? <Check size={13} className="text-emerald-400" /> : <Clipboard size={13} />}{copied ? 'Copied' : 'Copy email'}</button></div></Reveal><footer className="mx-auto mt-16 flex max-w-7xl flex-col gap-5 border-t border-white/[.08] pt-7 font-mono text-[9px] text-stone-700 sm:flex-row sm:items-center sm:justify-between"><span>© {new Date().getFullYear()} Bhumika Gaba</span><span>React · TypeScript · Built with intent</span></footer></section>
+}
